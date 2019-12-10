@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Calculo de mensualidades a pagar sobre prestamo contratado con interés compuesto.</h2>
+<p id="demo"></p>
+<script>
+
+var suma1 =10000; var suma2 =20000; var suma3 =30000; var suma4 =40000;
+
+var text = '{"prestamo":[{"monto":{"datos":{"suma":"function() {return suma1;}","plazo":4}}},{"monto":{"datos":{"suma":"function() {return suma2;}","plazo":6}}},{"monto":{"datos":{"suma":"function() {return suma3;}","plazo":8}}},{"monto":{"datos":{"suma":"function() {return suma4;}","interes":5,"plazo":12}}}],"costo":[{"m1":"function() {return suma1*1.05-suma1+objeto.mensualidad.mto1();}","m2":"function() {return suma1*1.05*1.05-suma1+objeto.mensualidad.mto1();}","m3":"function() {return suma1*1.05*1.05*1.05-suma1+objeto.mensualidad.mto1();}","m4":"function() {return suma1*1.05*1.05*1.05*1.05-suma1+objeto.mensualidad.mto1();}"},{"m1":"function() {return suma2*1.05-suma2+objeto.mensualidad.mto2();}","m2":"function() {return suma2*1.05*1.05-suma2+objeto.mensualidad.mto2();}","m3":"function() {return suma2*1.05*1.05*1.05-suma2+objeto.mensualidad.mto2();}","m4":"function() {return suma2*1.05*1.05*1.05*1.05-suma2+objeto.mensualidad.mto2();}","m5":"function() {return suma2*1.05*1.05*1.05*1.05*1.05-suma2+objeto.mensualidad.mto2();}","m6":"function() {return suma2*1.05*1.05*1.05*1.05*1.05*1.05-suma2+objeto.mensualidad.mto2();}"},{"m1":"function() {return suma3*1.05-suma3+objeto.mensualidad.mto3();}","m2":"function() {return suma3*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m3":"function() {return suma3*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m4":"function() {return suma3*1.05*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m5":"function() {return suma3*1.05*1.05*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m6":"function() {return suma3*1.05*1.05*1.05*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m7":"function() {return suma3*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}","m8":"function() {return suma3*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma3+objeto.mensualidad.mto3();}"},{"m1":"function() {return suma4*1.05-suma4+objeto.mensualidad.mto4();}","m2":"function() {return suma4*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m3":"function() {return suma4*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m4":"function() {return suma4*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m5":"function() {return suma4*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m6":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m7":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m8":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m9":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m10":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m11":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}","m12":"function() {return suma4*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05*1.05-suma4+objeto.mensualidad.mto4();}"}],"ct":{"ct1":"function() {return objeto.costo[0].m1()+objeto.costo[0].m2()+objeto.costo[0].m3()+objeto.costo[0].m4();}","ct2":"function() {return objeto.costo[1].m1()+objeto.costo[1].m2()+objeto.costo[1].m3()+objeto.costo[1].m4()+objeto.costo[1].m5()+objeto.costo[1].m6();}","ct3":"function() {return objeto.costo[2].m1()+objeto.costo[2].m2()+objeto.costo[2].m3()+objeto.costo[2].m4()+objeto.costo[2].m5()+objeto.costo[2].m6()+objeto.costo[2].m7()+objeto.costo[2].m8();}","ct4":"function() {return objeto.costo[3].m1()+objeto.costo[3].m2()+objeto.costo[3].m3()+objeto.costo[3].m4()+objeto.costo[3].m5()+objeto.costo[3].m6()+objeto.costo[3].m7()+objeto.costo[3].m8()+objeto.costo[3].m9()+objeto.costo[3].m10()+objeto.costo[3].m11()+objeto.costo[3].m12();}"},"mensualidad":{"mto1":"function() {return suma1/4;}","mto2":"function() {return suma2/6;}","mto3":"function() {return suma3/8;}","mto4":"function() {return suma4/12;}"}}' ;
+
+var objeto = JSON.parse(text);
+objeto.mensualidad.mto1 = eval("(" + objeto.mensualidad.mto1 + ")");
+objeto.mensualidad.mto2 = eval("(" + objeto.mensualidad.mto2 + ")");
+objeto.mensualidad.mto3 = eval("(" + objeto.mensualidad.mto3 + ")");
+objeto.mensualidad.mto4 = eval("(" + objeto.mensualidad.mto4 + ")");
+objeto.ct.ct1 = eval("(" + objeto.ct.ct1 + ")");
+objeto.ct.ct2 = eval("(" + objeto.ct.ct2 + ")");
+objeto.ct.ct3 = eval("(" + objeto.ct.ct3 + ")");
+objeto.ct.ct4 = eval("(" + objeto.ct.ct4 + ")");
+objeto.costo[0].m1 = eval("(" + objeto.costo[0].m1 + ")");
+objeto.costo[0].m2 = eval("(" + objeto.costo[0].m2 + ")");
+objeto.costo[0].m3 = eval("(" + objeto.costo[0].m3 + ")");
+objeto.costo[0].m4 = eval("(" + objeto.costo[0].m4 + ")");
+objeto.costo[1].m1 = eval("(" + objeto.costo[1].m1 + ")");
+objeto.costo[1].m2 = eval("(" + objeto.costo[1].m2 + ")");
+objeto.costo[1].m3 = eval("(" + objeto.costo[1].m3 + ")");
+objeto.costo[1].m4 = eval("(" + objeto.costo[1].m4 + ")");
+objeto.costo[1].m5 = eval("(" + objeto.costo[1].m5 + ")");
+objeto.costo[1].m6 = eval("(" + objeto.costo[1].m6 + ")");
+objeto.costo[2].m1 = eval("(" + objeto.costo[2].m1 + ")");
+objeto.costo[2].m2 = eval("(" + objeto.costo[2].m2 + ")");
+objeto.costo[2].m3 = eval("(" + objeto.costo[2].m3 + ")");
+objeto.costo[2].m4 = eval("(" + objeto.costo[2].m4 + ")");
+objeto.costo[2].m5 = eval("(" + objeto.costo[2].m5 + ")");
+objeto.costo[2].m6 = eval("(" + objeto.costo[2].m6 + ")");
+objeto.costo[2].m7 = eval("(" + objeto.costo[2].m7 + ")");
+objeto.costo[2].m8 = eval("(" + objeto.costo[2].m8 + ")");
+objeto.costo[3].m1 = eval("(" + objeto.costo[3].m1 + ")");
+objeto.costo[3].m2 = eval("(" + objeto.costo[3].m2 + ")");
+objeto.costo[3].m3 = eval("(" + objeto.costo[3].m3 + ")");
+objeto.costo[3].m4 = eval("(" + objeto.costo[3].m4 + ")");
+objeto.costo[3].m5 = eval("(" + objeto.costo[3].m5 + ")");
+objeto.costo[3].m6 = eval("(" + objeto.costo[3].m6 + ")");
+objeto.costo[3].m7 = eval("(" + objeto.costo[3].m7 + ")");
+objeto.costo[3].m8 = eval("(" + objeto.costo[3].m8 + ")");
+objeto.costo[3].m9 = eval("(" + objeto.costo[3].m9 + ")");
+objeto.costo[3].m10 = eval("(" + objeto.costo[3].m10 + ")");
+objeto.costo[3].m11 = eval("(" + objeto.costo[3].m11 + ")");
+objeto.costo[3].m12 = eval("(" + objeto.costo[3].m12 + ")");
+objeto.prestamo[3].monto.datos.suma = eval("(" + objeto.prestamo[3].monto.datos.suma + ")");
+objeto.prestamo[2].monto.datos.suma = eval("(" + objeto.prestamo[2].monto.datos.suma + ")"); 
+objeto.prestamo[1].monto.datos.suma = eval("(" + objeto.prestamo[1].monto.datos.suma + ")");
+objeto.prestamo[0].monto.datos.suma = eval("(" + objeto.prestamo[0].monto.datos.suma + ")");
+
+document.getElementById("demo").innerHTML ="<h2>" +
+"Monto1 "+ "</h2>" 
++"Suma contratada:"+objeto.prestamo[0].monto.datos.suma()+"<br>"
++"Interes:"+objeto.prestamo[3].monto.datos.interes+"<br>" 
++"Plazo en meses:"+objeto.prestamo[0].monto.datos.plazo+"<br>" 
++"1ra Mensualidad:"+objeto.costo[0].m1()+"<br>"
++"2a Mensualidad:"+objeto.costo[0].m2()+"<br>"
++"3ra Mensualidad:"+objeto.costo[0].m3()+"<br>"
++"4a Mensualidad:"+objeto.costo[0].m4()+"<h4>" 
++ "Costo total del prestamo: "+objeto.ct.ct1()+"</h4>"+
+"<h2>" +
+
+"Monto2 "+ "</h2>" 
++"Suma contratada:"+objeto.prestamo[1].monto.datos.suma()+"<br>" 
++"Interes:"+objeto.prestamo[3].monto.datos.interes+"<br>" 
++"Plazo en meses:"+objeto.prestamo[1].monto.datos.plazo+"<br>"
++"1ra Mensualidad:"+objeto.costo[1].m1()+"<br>"
++"2a Mensualidad:"+objeto.costo[1].m2()+"<br>"
++"3a Mensualidad:"+objeto.costo[1].m3()+"<br>"
++"4a Mensualidad:"+objeto.costo[1].m4()+"<br>"
++"5a Mensualidad:"+objeto.costo[1].m5()+"<br>"
++"6a Mensualidad:"+objeto.costo[1].m6()+"<h4>" 
++ "Costo total del prestamo: "+objeto.ct.ct2()+"</h4>"+
+"<h2>" +
+
+"Monto3 "+ "</h2>" 
++"Suma contratada:"+objeto.prestamo[2].monto.datos.suma() +"<br>"
++"Interes:"+objeto.prestamo[3].monto.datos.interes+"<br>" 
++"Plazo en meses:"+objeto.prestamo[2].monto.datos.plazo+"<br>" 
++"1ra Mensualidad:"+objeto.costo[2].m1()+"<br>"
++"2a Mensualidad:"+objeto.costo[2].m2()+"<br>"
++"3a Mensualidad:"+objeto.costo[2].m3()+"<br>"
++"4a Mensualidad:"+objeto.costo[2].m4()+"<br>"
++"5a Mensualidad:"+objeto.costo[2].m5()+"<br>"
++"6a Mensualidad:"+objeto.costo[2].m6()+"<br>"
++"7a Mensualidad:"+objeto.costo[2].m7()+"<br>"
++"8a Mensualidad:"+objeto.costo[2].m8()+"<h4>" 
++ "Costo total del prestamo: "+objeto.ct.ct3()+"</h4>"+
+"<h2>" +
+
+"Monto4 "+ "</h2>" 
++"Suma contratada:"+objeto.prestamo[3].monto.datos.suma()+"<br>" 
++"Interes:"+objeto.prestamo[3].monto.datos.interes+"<br>" 
++"Plazo en meses:"+objeto.prestamo[3].monto.datos.plazo+"<br>" 
++"1ra Mensualidad:"+objeto.costo[3].m1()+"<br>"
++"2a Mensualidad:"+objeto.costo[3].m2()+"<br>"
++"3ra Mensualidad:"+objeto.costo[3].m3()+"<br>"
++"4a Mensualidad:"+objeto.costo[3].m4()+"<br>"    
++"5a Mensualidad:"+objeto.costo[3].m5()+"<br>"
++"6a Mensualidad:"+objeto.costo[3].m6()+"<br>"
++"7a Mensualidad:"+objeto.costo[3].m7()+"<br>"
++"8a Mensualidad:"+objeto.costo[3].m8()+"<br>"
++"9a Mensualidad:"+objeto.costo[3].m9()+"<br>"
++"10a Mensualidad:"+objeto.costo[3].m10()+"<br>"
++"11a Mensualidad:"+objeto.costo[3].m11()+"<br>"
++"12a Mensualidad:"+objeto.costo[3].m11()+"<h4>" 
++ "Costo total del prestamo: "+objeto.ct.ct4()+"</h4>";
+
+</script>
+</body>
+</html>
